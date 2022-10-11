@@ -32,6 +32,7 @@ public class Vacanza {
 		this.destinazione = destinazione;
 		this.dataInizio = dataInizio;
 		this.dataFine = dataFine;
+		confronta();
 	}
 	
 	//CONFRONTO DATA
