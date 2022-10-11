@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Agenzia {
 	static Scanner sc = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
 		String risposta;
 		int giornoInizio;
@@ -15,40 +15,40 @@ public class Agenzia {
 		int meseFine;
 		int annoFine;
 		Vacanza oggetto;
-		
+
 		do {
-				System.out.println("INSERISCI DESTINAZIONE VACANZA");
-				risposta = sc.nextLine();
-				System.out.println("GIORNO PARTENZA");
-				giornoInizio = Integer.parseInt(sc.nextLine());
-				System.out.println("MESE PARTENZA");
-				meseInizio = Integer.parseInt(sc.nextLine());
-				System.out.println("ANNO PARTENZA");
-				annoInizio = Integer.parseInt(sc.nextLine());
-				System.out.println("----------------------\n GIORNO RITORNO");
-				giornoFine = Integer.parseInt(sc.nextLine());
-				System.out.println("MESE RITORNO");
-				meseFine = Integer.parseInt(sc.nextLine());
-				System.out.println("ANNO RITORNO");
-				annoFine = Integer.parseInt(sc.nextLine());
-				oggetto = new Vacanza(risposta,LocalDate.of(annoInizio, meseInizio, giornoInizio),LocalDate.of(annoFine, meseFine, giornoFine));
-				if(risposta.equals(null) || oggetto.getDataInizio() == null || oggetto.checkDataInizio())System.out.println("ERRORE");
-				
+			System.out.println("INSERISCI DESTINAZIONE VACANZA");
+			risposta = sc.nextLine();
+			System.out.println("GIORNO PARTENZA");
+			giornoInizio = Integer.parseInt(sc.nextLine());
+			System.out.println("MESE PARTENZA");
+			meseInizio = Integer.parseInt(sc.nextLine());
+			System.out.println("ANNO PARTENZA");
+			annoInizio = Integer.parseInt(sc.nextLine());
+			System.out.println("----------------------\n GIORNO RITORNO");
+			giornoFine = Integer.parseInt(sc.nextLine());
+			System.out.println("MESE RITORNO");
+			meseFine = Integer.parseInt(sc.nextLine());
+			System.out.println("ANNO RITORNO");
+			annoFine = Integer.parseInt(sc.nextLine());
+
+			try {
+				oggetto = new Vacanza(risposta, LocalDate.of(annoInizio, meseInizio, giornoInizio),
+						LocalDate.of(annoFine, meseFine, giornoFine));
+				oggetto.confronta();
+				if (risposta.equals(null) || oggetto.getDataInizio() == null || oggetto.checkDataInizio())
+					System.out.println("ERRORE");
 				else {
-					try {
-							oggetto.confronta();
-							System.out.println("ERRORE");
-					}
-					catch (Exception e) {
-						//...
-					}
-					System.out.println("GIORNI VACANZA: "+oggetto.contaGiorni());
+					System.out.println("GIORNI VACANZA: " + oggetto.contaGiorni());
 				}
-				
-				System.out.println("[EXIT] PER USCIRE");
-				risposta = sc.nextLine();
-				
-		}
-		while(risposta.equals("EXIT"));
+
+			} catch (Exception e) {
+				// ...
+			}
+
+			System.out.println("[EXIT] PER USCIRE");
+			risposta = sc.nextLine();
+
+		} while (risposta.equals("EXIT"));
 	}
 }
